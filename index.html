@@ -133,7 +133,7 @@
             display: inline-block;
             padding: 12px 24px;
             background: var(--primary);
-            color: white;
+            color: blue;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
@@ -808,7 +808,7 @@
     <div class="page active-page" id="loginPage">
         <div class="auth-container">
             <div class="auth-box">
-                <h1 class="auth-title">Chat Zoon</h1>
+                <h1 class="auth-title">Chat</h1>
                 
                 <div class="form-group">
                     <label for="loginUsername" class="form-label">اسم المستخدم</label>
@@ -1185,7 +1185,7 @@
         
         // التحقق من حالة المصادقة
         function checkAuthState() {
-            const savedUser = localStorage.getItem('chatZoonUser');
+            const savedUser = localStorage.getItem('chatUser');
             
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
@@ -1253,7 +1253,7 @@
                         profileImage: user.profileImage || ''
                     };
                     
-                    localStorage.setItem('chatZoonUser', JSON.stringify(currentUser));
+                    localStorage.setItem('chatUser', JSON.stringify(currentUser));
                     
                     database.ref('users/' + userId).update({
                         isOnline: true,
@@ -1345,7 +1345,7 @@
                         profileImage: imageUrl || ''
                     };
                     
-                    localStorage.setItem('chatZoonUser', JSON.stringify(currentUser));
+                    localStorage.setItem('chatUser', JSON.stringify(currentUser));
                     
                     if (imageUrl) {
                         uploadSuccess.style.display = 'block';
@@ -1415,7 +1415,7 @@
                     currentUser.status = currentUserData.status || '';
                     currentUser.profileImage = currentUserData.profileImage || '';
                     
-                    localStorage.setItem('chatZoonUser', JSON.stringify(currentUser));
+                    localStorage.setItem('chatUser', JSON.stringify(currentUser));
                     
                     updateProfileImage(currentUser.profileImage);
                     updateSettingsUI();
@@ -1710,7 +1710,7 @@
                 currentUser.username = newUsername;
                 currentUser.status = newStatus;
                 
-                localStorage.setItem('chatZoonUser', JSON.stringify(currentUser));
+                localStorage.setItem('chatUser', JSON.stringify(currentUser));
                 
                 updateSettingsUI();
                 
@@ -1792,7 +1792,7 @@
                     });
                 }
                 
-                localStorage.removeItem('chatZoonUser');
+                localStorage.removeItem('chatUser');
                 currentUser = null;
                 currentUserData = null;
                 
@@ -1941,7 +1941,7 @@
                 });
 
                 currentUser.profileImage = downloadURL;
-                localStorage.setItem('chatZoonUser', JSON.stringify(currentUser));
+                localStorage.setItem('chatUser', JSON.stringify(currentUser));
 
                 updateProfileImage(downloadURL);
                 showToast('تم تحديث الصورة بنجاح!');
@@ -1969,3 +1969,4 @@
 </body>
 
 </html>
+
